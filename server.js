@@ -10,11 +10,20 @@ const HOST = '0.0.0.0'; // Sempre escuta em todas as interfaces
 
 // Middleware
 app.use(cors({
-  origin: [
-    'https://difftxt.vercel.app',
-    'http://localhost:5173',
-    'http://localhost:3000'
-  ],
+  origin: function(origin, callback) {
+    const allowedOrigins = [
+      'https://difftxt.vercel.app',
+      'http://localhost:5173',
+      'http://localhost:3000'
+    ];
+    
+    // Permite requests sem origin (como requisições do Postman ou same-origin)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type']
