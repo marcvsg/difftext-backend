@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express();
 // Square Cloud define PORT automaticamente, mas usamos 80 como fallback
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3001;
 const HOST = '0.0.0.0'; // Sempre escuta em todas as interfaces
 
 // Middleware
