@@ -12,6 +12,7 @@ const HOST = '0.0.0.0'; // Sempre escuta em todas as interfaces
 app.use(cors({
   origin: function(origin, callback) {
     const allowedOrigins = [
+      'https://difftexto.squareweb.app/',
       'https://difftxt.vercel.app',
       'http://localhost:5173',
       'http://localhost:3000'
